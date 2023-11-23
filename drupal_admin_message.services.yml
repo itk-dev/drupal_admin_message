@@ -1,0 +1,6 @@
+services:
+  Drupal\drupal_admin_message\EventSubscriber\ResponseSubscriber:
+    arguments:
+      - '@router.admin_context'
+    tags:
+      - { name: 'event_subscriber' }
