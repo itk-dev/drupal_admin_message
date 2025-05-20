@@ -13,18 +13,13 @@ use Symfony\Component\HttpKernel\KernelEvents;
  * Response subscriber.
  */
 class ResponseSubscriber implements EventSubscriberInterface {
-  /**
-   * The admin context.
-   *
-   * @var \Drupal\Core\Routing\AdminContext
-   */
-  private AdminContext $adminContext;
 
   /**
    * Constructor.
    */
-  public function __construct(AdminContext $adminContext) {
-    $this->adminContext = $adminContext;
+  public function __construct(
+    private readonly AdminContext $adminContext,
+  ) {
   }
 
   /**
@@ -38,10 +33,10 @@ class ResponseSubscriber implements EventSubscriberInterface {
     $message = $this->getMessage();
 
     if (NULL !== $message && $response instanceof HtmlResponse) {
-      $content = $response->getContent();
-      $content = preg_replace('/<body[^>]*>/', '$0' . $message, $content);
-
-      $response->setContent($content);
+      if ($content = $response->getContent()) {
+        $content = preg_replace('/<body[^>]*>/', '$0' . $message, $content);
+        $response->setContent($content);
+      }
     }
   }
 
@@ -72,7 +67,8 @@ class ResponseSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
-  public static function getSubscribedEvents() {
+  #[\Override]
+  public static function getSubscribedEvents(): array {
     return [
       KernelEvents::RESPONSE => ['onResponse', -1000],
     ];

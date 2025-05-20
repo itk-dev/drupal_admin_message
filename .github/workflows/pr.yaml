@@ -1,0 +1,22 @@
+name: PR Review
+
+on:
+  pull_request:
+
+jobs:
+  code-analysis:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        drupal-version:
+          - 10
+          # Installing Drupal 11 does not yet work with sqlite.
+          # - 11
+        script-name:
+          - phpstan
+          - rector
+    steps:
+      - uses: actions/checkout@v4
+      - name: Drupal ${{ matrix.drupal-version }}/${{ matrix.script-name }}
+        run: |
+          DRUPAL_VERSION=${{ matrix.drupal-version }} ./scripts/${{ matrix.script-name }}
