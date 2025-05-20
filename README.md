@@ -8,7 +8,7 @@ Show message on admin routes.
 
 ```shell
 composer require itk-dev/drupal_admin_message
-vendor/bin/drush pm:enable drupal_admin_message
+vendor/bin/drush pm:install drupal_admin_message
 ```
 
 Exclude the module from the configuration synchronization (cf.
@@ -36,17 +36,10 @@ $settings['drupal_admin_message']['css']['color'] = 'white;';
 ## Coding standards
 
 ```shell
-docker run --rm --volume ${PWD}:/app --workdir /app itkdev/php8.2-fpm:latest composer install
-docker run --rm --volume ${PWD}:/app --workdir /app itkdev/php8.2-fpm:latest composer coding-standards-check
+docker compose run --rm phpfpm composer install
+docker compose run --rm phpfpm vendor/bin/phpcs
 ```
 
 ```shell
-docker run --rm --volume ${PWD}:/app --workdir /app node:20 yarn install
-docker run --rm --volume ${PWD}:/app --workdir /app node:20 yarn coding-standards-check
-```
-
-## Code analysis
-
-```shell
-docker run --rm --volume ${PWD}:/app --workdir /app itkdev/php8.2-fpm:latest scripts/code-analysis
+docker compose run --rm markdownlint markdownlint '**/*.md'
 ```
