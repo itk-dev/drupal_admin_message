@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-4](https://github.com/itk-dev/drupal_admin_message/pull/4)
+  Code analysis
 * [PR-3](https://github.com/itk-dev/drupal_admin_message/pull/3)
   Drupal 11
 

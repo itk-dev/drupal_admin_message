@@ -7,6 +7,7 @@
 
   <file>.</file>
 
+  <exclude-pattern>rector.php</exclude-pattern>
   <!-- Exclude generated files -->
   <exclude-pattern>node_modules</exclude-pattern>
   <exclude-pattern>vendor</exclude-pattern>
@@ -27,5 +28,6 @@
     <exclude name="Drupal.NamingConventions.ValidEnumCase.NoUpperAcronyms" />
     <exclude name="Drupal.NamingConventions.ValidEnumCase.NoUnderscores" />
   </rule>
-   <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired"/>
+  <rule ref="DrupalPractice"/>
+  <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired"/>
 </ruleset>

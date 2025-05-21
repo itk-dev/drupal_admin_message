@@ -37,9 +37,21 @@ $settings['drupal_admin_message']['css']['color'] = 'white;';
 
 ```shell
 docker compose run --rm phpfpm composer install
+docker compose run --rm phpfpm vendor/bin/phpcbf
 docker compose run --rm phpfpm vendor/bin/phpcs
 ```
 
 ```shell
 docker compose run --rm markdownlint markdownlint '**/*.md'
 ```
+
+## Code analysis
+
+Running static analyses on a Drupal module (may) require a full Drupal installation. Therefore we run code analysis
+using [the official Drupal docker image](https://hub.docker.com/_/drupal/) (see [scripts/base](scripts/base) for
+details).
+
+```shell
+./scripts/phpstan
+./scripts/rector
+ ```
