@@ -3,4 +3,4 @@ description: Shows a message on admin routes.
 package: Custom
 
 type: module
-core_version_requirement: ^9.4 || ^10
+core_version_requirement: ^9.4 || ^10 || ^11

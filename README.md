@@ -8,7 +8,7 @@ Show message on admin routes.
 
 ```shell
 composer require itk-dev/drupal_admin_message
-vendor/bin/drush pm:enable drupal_admin_message
+vendor/bin/drush pm:install drupal_admin_message
 ```
 
 Exclude the module from the configuration synchronization (cf.
@@ -36,17 +36,22 @@ $settings['drupal_admin_message']['css']['color'] = 'white;';
 ## Coding standards
 
 ```shell
-docker run --rm --volume ${PWD}:/app --workdir /app itkdev/php8.2-fpm:latest composer install
-docker run --rm --volume ${PWD}:/app --workdir /app itkdev/php8.2-fpm:latest composer coding-standards-check
+docker compose run --rm phpfpm composer install
+docker compose run --rm phpfpm vendor/bin/phpcbf
+docker compose run --rm phpfpm vendor/bin/phpcs
 ```
 
 ```shell
-docker run --rm --volume ${PWD}:/app --workdir /app node:20 yarn install
-docker run --rm --volume ${PWD}:/app --workdir /app node:20 yarn coding-standards-check
+docker compose run --rm markdownlint markdownlint '**/*.md'
 ```
 
 ## Code analysis
 
+Running static analyses on a Drupal module (may) require a full Drupal installation. Therefore we run code analysis
+using [the official Drupal docker image](https://hub.docker.com/_/drupal/) (see [scripts/base](scripts/base) for
+details).
+
 ```shell
-docker run --rm --volume ${PWD}:/app --workdir /app itkdev/php8.2-fpm:latest scripts/code-analysis
-```
+./scripts/phpstan
+./scripts/rector
+ ```
