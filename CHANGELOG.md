@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-6](https://github.com/itk-dev/drupal_admin_message/pull/6)
+  Added version matrix
+
 ## [1.1.0] - 2025-05-21
 
 * [PR-4](https://github.com/itk-dev/drupal_admin_message/pull/4)
