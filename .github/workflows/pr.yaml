@@ -10,8 +10,10 @@ jobs:
       matrix:
         drupal-version:
           - 10
-          # Installing Drupal 11 does not yet work with sqlite.
-          # - 11
+          - 11
+        php-version:
+          - 8.3
+          - 8.4
         script-name:
           - phpstan
           - rector
@@ -19,4 +21,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Drupal ${{ matrix.drupal-version }}/${{ matrix.script-name }}
         run: |
-          DRUPAL_VERSION=${{ matrix.drupal-version }} ./scripts/${{ matrix.script-name }}
+          DRUPAL_VERSION=${{ matrix.drupal-version }} PHP_VERSION=${{ matrix.php-version }} ./scripts/${{ matrix.script-name }}

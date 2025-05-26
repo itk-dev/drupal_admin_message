@@ -2,8 +2,7 @@
 
 services:
   drupal:
-    # We cannot yet install Drupal 11 with sqlite (cf. https://www.drupal.org/project/drupal/issues/3346338)
-    image: drupal:${DRUPAL_VERSION:-10}-apache
+    image: drupal:${DRUPAL_VERSION:-11}-php${PHP_VERSION:-8.4}
     ports:
       - 80
     volumes:
@@ -19,3 +18,17 @@ services:
     environment:
       # Let the module path, i.e. the mounted path, be known in the container
       MODULE_PATH: web/modules/contrib/${MODULE_NAME:-drupal-module}
+    depends_on:
+      mariadb:
+        condition: service_healthy
+
+  mariadb:
+    image: mariadb
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    environment:
+      MARIADB_ROOT_PASSWORD: root
