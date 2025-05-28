@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-05-28
+
 * [PR-7](https://github.com/itk-dev/drupal_admin_message/pull/7)
   Added `show_on_all_pages` option
 * [PR-6](https://github.com/itk-dev/drupal_admin_message/pull/6)
@@ -23,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Added Drupal admin message module
 
-[Unreleased]: https://github.com/itk-dev/drupal_admin_message/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/itk-dev/drupal_admin_message/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/itk-dev/drupal_admin_message/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/itk-dev/drupal_admin_message/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/itk-dev/drupal_admin_message/releases/tag/1.0.0
