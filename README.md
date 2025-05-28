@@ -33,6 +33,13 @@ $settings['drupal_admin_message']['css']['background-color'] = 'orange';
 $settings['drupal_admin_message']['css']['color'] = 'white;';
 ```
 
+The message can optionally be shown on _all_ pages:
+
+```php
+# settings.local.php
+$settings['drupal_admin_message']['show_on_all_pages'] = TRUE;
+```
+
 ## Coding standards
 
 ```shell

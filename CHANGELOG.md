@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-7](https://github.com/itk-dev/drupal_admin_message/pull/7)
+  Added `show_on_all_pages` option
 * [PR-6](https://github.com/itk-dev/drupal_admin_message/pull/6)
   Added version matrix
 

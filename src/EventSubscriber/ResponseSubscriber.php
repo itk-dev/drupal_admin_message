@@ -44,8 +44,9 @@ class ResponseSubscriber implements EventSubscriberInterface {
    * Get message.
    */
   private function getMessage(): ?string {
-    if ($this->adminContext->isAdminRoute()) {
-      $settings = Settings::get('drupal_admin_message');
+    $settings = Settings::get('drupal_admin_message');
+
+    if ($this->adminContext->isAdminRoute() || ($settings['show_on_all_pages'] ?? FALSE)) {
       $blocks = array_filter((array) ($settings['blocks'] ?? NULL));
 
       if (!empty($blocks)) {
